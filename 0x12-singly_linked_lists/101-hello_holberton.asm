@@ -1,12 +1,11 @@
-.global main
-.extern printf
+section .data
+    format db "Hello, Holberton", 0
+
+section .text
+    global main
+    extern printf
 
 main:
-    mov    edi, format
-    xor    eax, eax
-    call   printf
-    mov    eax, 0
+    mov rdi, format
+    call printf
     ret
-
-format:
-    db     "Hello, Holberton", 0
