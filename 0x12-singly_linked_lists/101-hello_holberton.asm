@@ -1,13 +1,15 @@
 section .data
-    format db "Hello, Holberton", 10, 0  ; 10 represents a newline character
+    format db "Hello, Holberton", 0
+    format_len equ $ - format
+    new_line db 10
 
 section .text
     global main
     extern printf
 
 main:
-    sub rsp, 8    ; align the stack
-    mov rdi, format
+    sub rsp, 8
+    lea rdi, [rel format]
     call printf
-    add rsp, 8    ; restore the stack
+    add rsp, 8
     ret
